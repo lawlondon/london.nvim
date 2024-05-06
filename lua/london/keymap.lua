@@ -3,13 +3,8 @@
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-map("n", "<leader>e", vim.cmd.Ex, opts)
 map('i', 'jj', '<esc>', opts)
 map('n', 'U', '<C-r>', {})
-
--- highlight on search
-vim.opt.hlsearch = true
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- highlight when yanking text
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -21,7 +16,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- use Ctrl+hjkl to switch between windows
-map('n', '<C-h>', '<C-w><C-h>') 
+map('n', '<C-h>', '<C-w><C-h>')
 map('n', '<C-l>', '<C-w><C-l>')
 map('n', '<C-j>', '<C-w><C-j>')
 map('n', '<C-k>', '<C-w><C-k>')
@@ -34,6 +29,6 @@ map("v", "K", ":m '<-2<CR>gv=gv")
 map("x", "<leader>p", [["_dP]])
 
 -- delete to a blank register
-vim.keymap.set({"n", "v"}, "<leader>d", '"_d')
+map({"n", "v"}, "<leader>d", '"_d', {desc = "Delete w/ Copying"})
 
 

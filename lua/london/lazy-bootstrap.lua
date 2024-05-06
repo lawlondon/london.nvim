@@ -13,7 +13,12 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-	spec = "london.plugins",
-	change_detection = { notify = false } 
+require("lazy").setup({ { import = "london.plugins" }, { import = "london.plugins.coding" }, { import = "london.plugins.search" } }, {
+  checker = {
+    enabled = true,
+    notify = false,
+  },
+  change_detection = {
+    notify = false,
+  },
 })
