@@ -1,1 +1,1 @@
-require("london")
+require 'london'

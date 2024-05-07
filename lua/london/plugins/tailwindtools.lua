@@ -1,8 +1,8 @@
 -- tailwind-tools.lua
 return {
-  "luckasRanarison/tailwind-tools.nvim",
-  dependencies = { "nvim-treesitter/nvim-treesitter" },
+  'luckasRanarison/tailwind-tools.nvim',
+  dependencies = { 'nvim-treesitter/nvim-treesitter' },
   config = function()
-      require("tailwind-tools").setup({})
+    require('tailwind-tools').setup {}
   end,
 }

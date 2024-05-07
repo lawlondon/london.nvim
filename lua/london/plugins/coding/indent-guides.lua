@@ -1,10 +1,8 @@
-return { "lukas-reineke/indent-blankline.nvim",
-    config = function()
-        local guide = "▏"
+return {
+  'lukas-reineke/indent-blankline.nvim',
+  config = function()
+    local guide = '▏'
 
-        require("ibl").setup { indent = { char = guide }}
-
-    end
+    require('ibl').setup { indent = { char = guide } }
+  end,
 }
-
-

@@ -22,13 +22,11 @@ map('n', '<C-j>', '<C-w><C-j>')
 map('n', '<C-k>', '<C-w><C-k>')
 
 -- move highlighted line up or down
-map("v", "J", ":m '>+1<CR>gv=gv")
-map("v", "K", ":m '<-2<CR>gv=gv")
+map('v', 'J', ":m '>+1<CR>gv=gv")
+map('v', 'K', ":m '<-2<CR>gv=gv")
 
 -- replace selected text in visual mode with what was last yanked
-map("x", "<leader>p", [["_dP]])
+map('x', '<leader>p', [["_dP]])
 
 -- delete to a blank register
-map({"n", "v"}, "<leader>d", '"_d', {desc = "Delete w/ Copying"})
-
-
+map({ 'n', 'v' }, '<leader>d', '"_d', { desc = 'Delete w/ Copying' })
