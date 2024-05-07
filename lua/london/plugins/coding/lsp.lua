@@ -15,6 +15,8 @@ return {
     'onsails/lspkind-nvim',
     'stevearc/conform.nvim',
     'zapling/mason-conform.nvim',
+    'mfussenegger/nvim-lint',
+    'rshkarin/mason-nvim-lint',
   },
 
   config = function()
@@ -121,12 +123,41 @@ return {
 
     require('mason-conform').setup()
 
+    local lint = require 'lint'
+    lint.linters_by_ft = {
+      c = { 'cppcheck' },
+      cpp = { 'cppcheck' },
+      javascript = { 'eslint_d' },
+      typescript = { 'eslint_d' },
+      javascriptreact = { 'eslint_d' },
+      typescriptreact = { 'eslint_d' },
+      html = { 'htmlhint' },
+      css = { 'stylelint' },
+      lua = { 'luacheck' },
+      python = { 'ruff' },
+      go = { 'golangci_lint' },
+      rust = { 'snyk' },
+      php = { 'phpcs' },
+    }
+
+    vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
+      callback = function()
+        require('lint').try_lint()
+      end,
+    })
+
+    require('mason-nvim-lint').setup()
+
     local cmp = require 'cmp'
     cmp.setup {
       snippet = {
         expand = function(args)
           require('luasnip').lsp_expand(args.body)
         end,
+      },
+      auto_brackets = {},
+      completion = {
+        completeopt = 'menu,menuone,noinsert',
       },
       mapping = cmp.mapping.preset.insert {
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -181,7 +212,7 @@ return {
         map('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
         map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
         map('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-        map('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+        map('n', '<F2>', ':IncRename ', opts)
         map({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<CR>', opts)
         map('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
       end,

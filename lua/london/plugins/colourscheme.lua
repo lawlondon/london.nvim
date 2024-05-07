@@ -1,10 +1,11 @@
 return {
-  'Mofiqul/dracula.nvim',
-  name = 'dracula',
+  'olimorris/onedarkpro.nvim',
   config = function()
-    require('dracula').setup {
-      transparent_bg = true,
+    require('onedarkpro').setup {
+      options = {
+        transparency = true,
+      },
     }
-    vim.cmd.colorscheme 'dracula'
+    vim.cmd 'colorscheme onedark_vivid'
   end,
 }

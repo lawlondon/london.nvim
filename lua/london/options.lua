@@ -19,6 +19,7 @@ opt.timeoutlen = 300
 opt.mouse = 'a'
 opt.clipboard = 'unnamedplus'
 opt.smoothscroll = true
+vim.o.mousemoveevent = true
 
 opt.ignorecase = true
 opt.smartcase = true
