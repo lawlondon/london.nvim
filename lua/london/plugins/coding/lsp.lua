@@ -125,8 +125,8 @@ return {
 
     local lint = require 'lint'
     lint.linters_by_ft = {
-      c = { 'cppcheck' },
-      cpp = { 'cppcheck' },
+      c = { 'cpplint' },
+      cpp = { 'cpplint' },
       javascript = { 'eslint_d' },
       typescript = { 'eslint_d' },
       javascriptreact = { 'eslint_d' },
@@ -135,7 +135,7 @@ return {
       css = { 'stylelint' },
       lua = { 'luacheck' },
       python = { 'ruff' },
-      go = { 'golangci_lint' },
+      go = { 'golangci-lint' },
       rust = { 'snyk' },
       php = { 'phpcs' },
     }
