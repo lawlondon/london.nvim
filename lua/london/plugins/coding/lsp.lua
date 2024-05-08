@@ -131,13 +131,13 @@ return {
       typescript = { 'eslint_d' },
       javascriptreact = { 'eslint_d' },
       typescriptreact = { 'eslint_d' },
-      html = { 'htmlhint' },
+      --  html = { 'erb-lint' },
       css = { 'stylelint' },
       lua = { 'luacheck' },
-      python = { 'ruff' },
-      go = { 'golangci-lint' },
-      rust = { 'snyk' },
+      python = { 'ruff', 'mypy' },
+      go = { 'djlint' },
       php = { 'phpcs' },
+      rust = { 'trivy' },
     }
 
     vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
